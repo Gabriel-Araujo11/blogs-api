@@ -18,10 +18,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       published: {
-        type: Sequelize.DATE
+        type: Sequelize.DATETIME
       },
       updated: {
-        type: Sequelize.DATE
+        type: Sequelize.DATETIME
       }
     });
   },

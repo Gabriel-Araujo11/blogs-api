@@ -15,13 +15,17 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      password: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
       image: {
         allowNull: false,
         type: Sequelize.BLOB
-      }
+      },
     });
   },
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface, _Sequelize) {
     await queryInterface.dropTable('users');
   }
 };
