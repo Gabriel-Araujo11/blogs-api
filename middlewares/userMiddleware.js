@@ -46,8 +46,10 @@ function validatePassword(req, res, next) {
 }
 
 module.exports = {
+    validateUser: [
     checkEmail,
     validateEmail,
     validatePassword,
     validateDisplayName,
+ ],
 };
