@@ -3,7 +3,7 @@ const Users = (sequelize, DataTypes) => {
     displayName: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.INTEGER,
-    image: DataTypes.BLOB,
+    image: DataTypes.STRING,
   }, {
     tableName: 'users',
     timestamps: false,

@@ -1,5 +1,5 @@
 const BAD_REQUEST = 400;
-const emailRegexValidate = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i;
+const emailRegexValidate = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 
 // Validation name: deverá ser uma string com no mínimo de 8 caracteres;
 function validateDisplayName(req, res, next) {
@@ -23,7 +23,7 @@ function checkEmail(req, res, next) {
 // Validation email
 function validateEmail(req, res, next) {
     const { email } = req.body;
-    if (!email || email.length === undefined) {
+    if (!email || email.length === 0) {
         return res.status(BAD_REQUEST).json({ message: '"email" is required' });
     }
     if (!emailRegexValidate.test(email)) {

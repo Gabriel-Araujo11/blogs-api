@@ -1,12 +1,12 @@
 // busca o service e faz o tratamento CREATED or NOT;
-const createUserService = require('../services/userService');
+const userService = require('../services/userService');
 
 const CREATED = 201;
 
 async function createUserController(req, res) {
     const { displayName, email, password, image } = req.body;
 
-    const result = await createUserService({
+    const result = await userService.createUserService({
         displayName, email, password, image });
 
     if (result) {
