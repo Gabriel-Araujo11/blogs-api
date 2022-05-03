@@ -1,9 +1,7 @@
-const express = require('express');
+const router = require('express').Router();
 
 const userControllers = require('../controllers/userControllers');
-const { validateUser } = require('../middlewares/userMiddleware');
-
-const router = express.Router();
+const { validateUser } = require('../middlewares/userMiddleware');  
 
 router.post('/', validateUser, userControllers.createUserController);
 
