@@ -3,7 +3,7 @@ const emailRegexValidate = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 
 // Validation name: deverá ser uma string com no mínimo de 8 caracteres;
 function validateDisplayName(req, res, next) {
-    const displayName = req.body;
+    const { displayName } = req.body;
     if (displayName.length < 8) {
         return res
         .status(BAD_REQUEST)

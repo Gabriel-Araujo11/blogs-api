@@ -1,12 +1,10 @@
 // Busca o models e trata com async / await;
 
-const Users = require('../models/users');
+const { User } = require('../models');
 
 async function createUserService(displayName, email, password, image) {
-    const user = await Users.Users(displayName, email, password, image);
-    return user;
+    const result = await User.create(displayName, email, password, image);
+    return result;
 }
 
-module.exports = {
-    createUserService,
-};
+module.exports = { createUserService };
