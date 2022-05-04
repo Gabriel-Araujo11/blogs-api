@@ -59,11 +59,9 @@ async function checkSameEmail(req, res, next) {
 }
 
 module.exports = {
-    validateUser: [
         checkEmail,
         validateEmail,
         checkSameEmail,
         validatePassword,
         validateDisplayName,
-    ],
 };
