@@ -1,3 +1,6 @@
+const { User } = require('../models');
+
+const CONFLIT = 409;
 const BAD_REQUEST = 400;
 const emailRegexValidate = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 
@@ -45,11 +48,22 @@ function validatePassword(req, res, next) {
     next();
 }
 
+// Check mesmo email
+async function checkSameEmail(req, res, next) {
+    const { email } = req.body;
+    const chckEmail = await User.findOne({ where: { email } });
+    if (chckEmail) {
+        return res.status(CONFLIT).json({ message: 'User already registered' });
+    }
+    next();
+}
+
 module.exports = {
     validateUser: [
-    checkEmail,
-    validateEmail,
-    validatePassword,
-    validateDisplayName,
- ],
+        checkEmail,
+        validateEmail,
+        checkSameEmail,
+        validatePassword,
+        validateDisplayName,
+    ],
 };

@@ -1,4 +1,4 @@
 module.exports = {
-    expiresIn: '1a',
+    expiresIn: '7d',
     algorithm: 'HS256',
 };
