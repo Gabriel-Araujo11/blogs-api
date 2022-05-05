@@ -16,8 +16,7 @@ async function createLoginController(req, res) {
     }
 
     const token = jwt.sign({ data: result.id }, SECRET, validateJWT);
-    // console.log(token);
-        return res.status(OK).json({ message: token });
+        return res.status(OK).json({ token });
 }
 
 module.exports = { createLoginController };

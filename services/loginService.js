@@ -1,7 +1,6 @@
 const { User } = require('../models');
 
-async function createLoginService(dataUser) {
-    const { email, password } = dataUser;
+async function createLoginService(email, password) {
     const user = await User.findOne({ where: { email, password } });
     return user;
 }

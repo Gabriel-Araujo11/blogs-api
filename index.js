@@ -6,7 +6,7 @@ const router = require('./router/router');
 const app = express();
 
 app.use(express.json());
-app.use('/user', router);
+app.use('/', router);
 
 app.listen(3000, () => console.log('ouvindo porta 3000!'));
 

@@ -1,12 +1,13 @@
 const jwt = require('jsonwebtoken');
 
 const SECRET = process.env.JWT_SECRET;
-const UNAUTHORIZED = 401;
+
 const ERRO_HTTP = 500;
+const UNAUTHORIZED = 401;
 
 // https://www.luiztools.com.br/post/autenticacao-json-web-token-jwt-em-node-js-2/;
 function verifyJWTMethod(req, res, next) { 
-    const token = req.headers; 
+    const { authorization: token } = req.headers; 
     if (!token) {
         return res.status(UNAUTHORIZED).send({ auth: false, message: 'Token não informado.' });
     } 

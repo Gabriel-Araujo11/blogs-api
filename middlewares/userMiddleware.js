@@ -15,20 +15,17 @@ function validateDisplayName(req, res, next) {
     next();
 }
 
-// Validation/Check email
-function checkEmail(req, res, next) {
-    const { email } = req.body;
-    if (email === null) {
-        return res.status(BAD_REQUEST).json({ message: '"email" is required' });
-    }
-    next();
-}
 // Validation email
 function validateEmail(req, res, next) {
     const { email } = req.body;
-    if (!email || email.length === 0) {
+    
+    if (email === '') {
+            return res.status(BAD_REQUEST).json({ message: '"email" is not allowed to be empty' });
+        }
+    if (!email) {
         return res.status(BAD_REQUEST).json({ message: '"email" is required' });
     }
+
     if (!emailRegexValidate.test(email)) {
         return res.status(BAD_REQUEST).json({ message: '"email" must be a valid email' });
     }
@@ -37,9 +34,15 @@ function validateEmail(req, res, next) {
 // Validation password
 function validatePassword(req, res, next) {
     const { password } = req.body;
-    if (!password || password.length === 0) {
+    
+    if (password === '') {
+        return res.status(BAD_REQUEST).json({ message: '"password" is not allowed to be empty' });
+    }
+    
+    if (!password) {
         return res.status(BAD_REQUEST).json({ message: '"password" is required' });
     }
+    
     if (password.length !== 6) {
         return res
         .status(BAD_REQUEST)
@@ -59,7 +62,6 @@ async function checkSameEmail(req, res, next) {
 }
 
 module.exports = {
-        checkEmail,
         validateEmail,
         checkSameEmail,
         validatePassword,
