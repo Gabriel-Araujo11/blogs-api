@@ -2,6 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
+const verifyJWT = require('../auth/verifyJWT');
 const userControllers = require('../controllers/userControllers');
 const loginControllers = require('../controllers/loginControllers');
 const { checkEmail,
@@ -18,6 +19,10 @@ validatePassword,
 validateDisplayName,
 userControllers.createUserController);
 
-router.post('/login', validateEmail, validatePassword, loginControllers.createLoginController);
+router.post('/login',
+verifyJWT.verifyJWTMethod,
+validateEmail,
+validatePassword,
+loginControllers.createLoginController);
 
 module.exports = router;
