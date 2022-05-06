@@ -14,6 +14,10 @@ router.get('/user',
 verifyJWTMethod,
 userControllers.allUsersController);
 
+router.get('/user/:id',
+verifyJWTMethod,
+userControllers.getByIdUsersController);
+
 router.post('/user',
 validateEmail,
 checkSameEmail,

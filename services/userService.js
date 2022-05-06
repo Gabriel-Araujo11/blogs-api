@@ -12,7 +12,13 @@ async function allUsersService() {
     return result;
 }
 
+async function getByIdUsersService(id) {
+    const result = await User.findOne({ where: { id } });
+    return result;
+}
+
 module.exports = { 
+    getByIdUsersService,
     createUserService,
     allUsersService,
  };

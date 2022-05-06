@@ -3,6 +3,7 @@ const userService = require('../services/userService');
 
 const OK = 200;
 const CREATED = 201;
+const NOT_FOUND = 404;
 const INTERNAL_SERVER_ERROR = 500;
 
 async function createUserController(req, res) {
@@ -28,7 +29,21 @@ async function allUsersController(req, res) {
     }
 }
 
+async function getByIdUsersController(req, res) {
+    const { id } = req.params;
+    const result = await userService.getByIdUsersService(id);
+
+    if (result) {
+        return res.status(OK).json(result);
+    }
+
+    if (!result) {
+        return res.status(NOT_FOUND).json({ message: 'User does not exist' });
+    }
+}
+
 module.exports = {
     allUsersController,
     createUserController,
+    getByIdUsersController,
 };
