@@ -7,4 +7,12 @@ async function createUserService(displayName, email, password, image) {
     return result;
 }
 
-module.exports = { createUserService };
+async function allUsersService() {
+    const result = await User.findAll();
+    return result;
+}
+
+module.exports = { 
+    createUserService,
+    allUsersService,
+ };

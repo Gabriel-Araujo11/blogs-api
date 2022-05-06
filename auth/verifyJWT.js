@@ -21,4 +21,4 @@ function verifyJWTMethod(req, res, next) {
     }); 
 }    
 
-module.exports = { verifyJWTMethod };
+module.exports = verifyJWTMethod;

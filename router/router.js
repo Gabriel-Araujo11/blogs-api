@@ -2,13 +2,17 @@ const express = require('express');
 
 const router = express.Router();
 
-// const verifyJWT = require('../auth/verifyJWT');
+const verifyJWTMethod = require('../auth/verifyJWT');
 const userControllers = require('../controllers/userControllers');
 const loginControllers = require('../controllers/loginControllers');
 const { validateEmail, 
 checkSameEmail, 
 validatePassword, 
 validateDisplayName } = require('../middlewares/userMiddleware');  
+
+router.get('/user',
+verifyJWTMethod,
+userControllers.allUsersController);
 
 router.post('/user',
 validateEmail,
