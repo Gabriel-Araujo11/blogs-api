@@ -20,9 +20,11 @@ async function createUserController(req, res) {
 }
 
 async function allUsersController(req, res) {
+    try {
     const result = await userService.allUsersService();
-    if (result) {
         return res.status(OK).json(result);
+    } catch (err) {
+        return res.status(INTERNAL_SERVER_ERROR).json({ message: err.message });
     }
 }
 
