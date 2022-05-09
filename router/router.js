@@ -6,6 +6,7 @@ const verifyJWTMethod = require('../auth/verifyJWT');
 const userControllers = require('../controllers/userControllers');
 const loginControllers = require('../controllers/loginControllers');
 const postCategoriesControllers = require('../controllers/postCategoriesControllers');
+const blogPostsControllers = require('../controllers/blogPostsControllers');
 const { validateEmail, 
 checkSameEmail, 
 validatePassword, 
@@ -40,5 +41,13 @@ postCategoriesControllers.postCategoriesController);
 router.get('/categories',
 verifyJWTMethod,
 postCategoriesControllers.getAllCategConstroller);
+
+router.get('/post',
+verifyJWTMethod,
+blogPostsControllers.blogGetAllController);
+
+// router.post('/post',
+// verifyJWTMethod,
+// blogPostsControllers.blogPostController);
 
 module.exports = router;
