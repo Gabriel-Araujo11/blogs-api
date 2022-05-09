@@ -1,9 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
-    const categories = sequelize.define('Categorie', {
+    const Categories = sequelize.define('Categories', {
       name: DataTypes.STRING,
     }, {
       timestamps: false,
     });
   
-    return categories;
+    return Categories;
   };

@@ -15,6 +15,16 @@ function validateDisplayName(req, res, next) {
     next();
 }
 
+// Validate Name - Categories
+
+function validateNameCategories(req, res, next) {
+    const { name } = req.body;
+    if (!name) {
+        return res.status(BAD_REQUEST).json({ message: '"name" is required' });
+    }
+    next();
+}
+
 // Validation email
 function validateEmail(req, res, next) {
     const { email } = req.body;
@@ -66,4 +76,5 @@ module.exports = {
         checkSameEmail,
         validatePassword,
         validateDisplayName,
+        validateNameCategories,
 };
