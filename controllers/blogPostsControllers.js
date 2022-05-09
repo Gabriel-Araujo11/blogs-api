@@ -19,4 +19,17 @@ async function blogGetAllController(req, res) {
     }
 }
 
-module.exports = { blogGetAllController };
+async function blogByIdController(req, res) {
+    const { id } = req.params;
+    const result = await postBlogsService.blogPostById(id);
+
+    if (result) {
+        return res.status(OK).json(result);
+    } 
+        return res.status(404).json({ message: 'Post does not exist' });  
+}
+
+module.exports = {
+    blogGetAllController,
+    blogByIdController,
+ };

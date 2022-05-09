@@ -5,6 +5,8 @@ const { BlogPosts, Categories, User } = require('../models');
 //     return result;  
 // }
 
+// Decidi fazer o getAll, visto que estava dando problemas no .create e no db;
+
 async function blogPostGetAll() {
     const result = await BlogPosts.findAll({ 
         include: [
@@ -15,4 +17,18 @@ async function blogPostGetAll() {
     return result;
 }
 
-module.exports = { blogPostGetAll };
+async function blogPostById(id) {
+    const result = await BlogPosts.findOne({ where: { id },
+        include: [
+            { model: User, as: 'user', attributes: { exclude: ['password'] } },
+            { model: Categories, as: 'categories', through: { attributes: [] } },
+          ],
+     });
+
+    return result;
+}
+
+module.exports = { 
+    blogPostGetAll,
+    blogPostById,
+};

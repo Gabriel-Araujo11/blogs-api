@@ -46,6 +46,10 @@ router.get('/post',
 verifyJWTMethod,
 blogPostsControllers.blogGetAllController);
 
+router.get('/post/:id',
+verifyJWTMethod,
+blogPostsControllers.blogByIdController);
+
 // router.post('/post',
 // verifyJWTMethod,
 // blogPostsControllers.blogPostController);
